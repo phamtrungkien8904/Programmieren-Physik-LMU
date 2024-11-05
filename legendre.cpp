@@ -7,7 +7,8 @@ double legendre(int n, double x) {
     } else if (n == 1) {
         return x;
     } else {
-        double l = (2.0 * n - 1.0) / n * x * legendre(n - 1, x) - (n - 1.0) / n * legendre(n - 2, x); // Caution: use 2.0 instead of 2 to avoid integer division
+        double l = (2.0 * n - 1.0) / n * x * legendre(n - 1, x) - (n - 1.0) / n * legendre(n - 2, x); 
+        // Caution: use 2.0 instead of 2 to avoid integer division
         return l; 
     }
 }
