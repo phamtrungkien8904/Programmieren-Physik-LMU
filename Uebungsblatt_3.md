@@ -13,6 +13,7 @@ date: "5 11 2023"
 ___
 #### 3.1: `for`-loop: Legendre-Polynome
 Die Legendre-Polynome $P_n(x)$ spielen eine bedeutende Rolle bei der Darstellung des Drehimpulses in der Quantenmechanik (und nicht nur dort). Ihre Werte gehorchen der Rekursionsformel
+
 $$(n+1)P_{n+1} (x) = (2n+1) x P_n (x) - n P_{n-1} (x)$$
 
 mit den Anfangsbedingungen $P_0(x) = 0$ und $P_1(x) = x$.
