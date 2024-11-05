@@ -49,6 +49,18 @@ int main() {
     return 0;
 }
 ```
+###### Output test:
+```
+Legendre Polynomial
+Enter N: 5
+Enter x: 3
+P0(3) = 1
+P1(3) = 3
+P2(3) = 13
+P3(3) = 63
+P4(3) = 321
+P5(3) = 1683
+```
 
 
 #### 3.2: `do...while`-Loop
@@ -99,4 +111,10 @@ int main() {
     cout << N << "! = " << factorial(N) << endl;
     return 0;
 }
+```
+###### Output Test:
+```
+Factorial N!
+Enter N: 5
+5! = 120
 ```
