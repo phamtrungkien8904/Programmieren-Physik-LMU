@@ -1,11 +1,11 @@
 #include <iostream>
 using namespace std;
 
-int factorial(int n) {
+int nFac(int n) {
     if (n == 0) {
         return 1;
     } else {
-        return n * factorial(n - 1);
+        return n * nFac(n - 1);
     }
     // Alternative: for loop
     // for (int i = n - 1; i > 0; i--) {
@@ -19,7 +19,7 @@ int main() {
     int N;
     cout << "Enter N: ";
     cin >> N;
-    cout << N << "! = " << factorial(N) << endl;
+    cout << N << "! = " << nFac(N) << endl;
     return 0;
 }
 

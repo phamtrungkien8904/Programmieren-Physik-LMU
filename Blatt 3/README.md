@@ -18,7 +18,7 @@ $$(n+1)P_{n+1} (x) = (2n+1) x P_n (x) - n P_{n-1} (x)$$
 
 mit den Anfangsbedingungen $P_0(x) = 0$ und $P_1(x) = x$.
 Schreiben Sie ein Programm, dass die Werte aller $P_n$ bis $n \leq N$ am Punkt $x$ ausgibt. Verwenden Sie dafür einen `for`-Loop.
-###### Mein Code:
+###### Mein Code (`legendre.cpp`):
 ```c
 #include <iostream>
 using namespace std;
@@ -66,7 +66,7 @@ P5(3) = 1683
 
 #### 3.2: `do...while`-Loop
 Berechnen Sie die Werte der Legendre-Polynome wie oben, aber mittels eines `do...while`-Loops statt `for`-Loop.
-###### Mein Code: 
+###### Mein Code (`legendre.cpp`): 
 ```c
     do {
         cout << "P" << N << "(" << x_in << ") = " << legendre(N, x_in) << endl;
@@ -86,16 +86,16 @@ int main() {
     std::cout << nFac << "\n";
 }
 ```
-###### Mein Code:
+###### Mein Code (`factorial.cpp`):
 ```c
 #include <iostream>
 using namespace std;
 
-int factorial(int n) {
+int nFac(int n) {
     if (n == 0) {
         return 1;
     } else {
-        return n * factorial(n - 1);
+        return n * nFac(n - 1);
     }
     // Alternative: for loop
     // for (int i = n - 1; i > 0; i--) {
@@ -109,7 +109,7 @@ int main() {
     int N;
     cout << "Enter N: ";
     cin >> N;
-    cout << N << "! = " << factorial(N) << endl;
+    cout << N << "! = " << nFac(N) << endl;
     return 0;
 }
 ```
