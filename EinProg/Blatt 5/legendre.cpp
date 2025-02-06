@@ -15,7 +15,7 @@ vector<double> legendre(double x, int N){
 
 int main(){
     double x = 1.2;
-    int N = 5;
+    int N = 10;
     vector<double> leg = legendre(x,N);
     for (size_t i = 0; i < leg.size(); i++){
         cout << "P_" << i << " = " << leg[i];

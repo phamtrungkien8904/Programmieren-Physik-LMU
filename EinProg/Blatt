@@ -1,0 +1,24 @@
+#ifndef epString
+#define epString
+
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+namespace ep {
+    vector<string> splitString(string s) {
+        vector<string> res;
+        size_t pos = 0;
+        size_t found = s.find(",");
+        while (found < s.size()) {
+            res.push_back(s.substr(pos, found - pos));
+            pos = found + 1;
+            found = s.find(",", pos);
+        }
+        res.push_back(s.substr(pos));
+        return res;
+    }
+}
+
+#endif
