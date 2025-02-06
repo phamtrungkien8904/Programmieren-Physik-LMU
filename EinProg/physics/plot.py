@@ -1,56 +1,52 @@
-from math import sin, cos, pi
-from numpy import zeros 
-import matplotlib.pyplot as plt
 import sys
+import math
+import numpy as np
+import matplotlib.pyplot as plt
 
 if len(sys.argv) != 2:
     print("Usage: python3 plot.py data-file")
     exit()
-
 MyData = sys.argv[1]
+vals = []
 
-# Inputs
-ub = 2
-lb = 0
-dt = 0.01
-N = int((ub - lb)/dt)
-x = zeros(N)
-vx = zeros(N)
-y = zeros(N)
-vy = zeros(N)
-t = zeros(N)
-analytical_x = zeros(N)
-analytical_y = zeros(N)
+# Open file and read rows
+with open(MyData, 'r') as f:
+    for i, row in enumerate(f):
+        # Remove newline and split by comma
+        items = row.strip().split(',')
+        # Initialize a list for each column on the first row
+        if i == 0:
+            vals = [[] for _ in items]
+        # Append each value as float into its respective list
+        for j, item in enumerate(items):
+            vals[j].append(float(item))
 
-# Initial parameters
+######## Analytical solutions
+# Const parameters
 v0 = 10
 theta = 45
 g = 9.81
 h0 = 10
 
-# Initial conditions
-x[0] = 0
-vx[0] = v0*cos(theta)
-y[0] = h0
-vy[0] = v0*sin(theta)
-t[0] = 0
-analytical_x[0] = x[0] + vx[0]*t[0]
-analytical_y[0] = y[0] + vy[0]*t[0] - 0.5*g*t[0]**2 
+# Convert angle to radians
+theta_rad = math.radians(theta)
 
+# Inputs
+t_max = 2
+t_min = 0
+dt = 0.01
+N = int((t_max - t_min)/dt) + 1  # include endpoint
 
-# Derivative function
-for i in range(1, N):
-    t[i] = t[i-1] + dt
-    vx[i] = vx[i-1]
-    x[i] = x[i-1] + dt*vx[i-1]
-    vy[i] = vy[i-1] - g*dt
-    y[i] = y[i-1] + dt*vy[i-1]
-    analytical_x[i] = x[0] + vx[0]*t[i]
-    analytical_y[i] = y[0] + vy[0]*t[i] - 0.5*g*t[i]**2
+# Generate time values
+t_values = np.linspace(t_min, t_max, N)
 
+# Compute analytical solution using projectile motion equations
+analytical_x = v0 * np.cos(theta_rad) * t_values
+analytical_y = h0 + v0 * np.sin(theta_rad) * t_values - 0.5 * g * t_values**2
+########
 
 # Plot
-plt.plot(x, y, label='Numerical')
+plt.plot(vals[1], vals[2], label='Numerical')
 plt.plot(analytical_x, analytical_y, label='Analytical')
 plt.legend(['Numerical', 'Analytical'])
 plt.xlabel('$x$')

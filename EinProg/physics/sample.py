@@ -3,11 +3,6 @@ from numpy import zeros
 import matplotlib.pyplot as plt
 import sys
 
-if len(sys.argv) != 2:
-    print("Usage: python3 plot.py data-file")
-    exit()
-
-MyData = sys.argv[1]
 
 # Inputs
 ub = 2
