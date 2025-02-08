@@ -16,11 +16,7 @@ int main(){
     double dt = 0.01;
     int N = (t_max - t_min)/dt;
 
-    vector<double> t(N,0);
-    vector<double> vx(N,0);
-    vector<double> vy(N,0);
-    vector<double> x(N,0);
-    vector<double> y(N,0);
+    vector<double> t(N,0), vx(N,0), vy(N,0), x(N,0), y(N,0);
 
     // Initial conditions
     x[0] = 0;
