@@ -7,8 +7,8 @@
 // For now, it is enough to know that everytime the keyword after #define
 // shows up in the code, it will be replaced by what is directly behind it.
 #define DATA_SIZE 4096
-//#define ARRAY_SIZE (1<<24)
-#define ARRAY_SIZE 2048
+#define ARRAY_SIZE (1<<24)
+//#define ARRAY_SIZE 2048
 
 // Structs are custom data types. You can fill them with pretty much everything
 // you want. Think of them as the part of a class that holds all the variables
@@ -48,10 +48,10 @@ int main()
     
     // Access the first int in the data structure
     // This might cause a segmentation fault if the memory allocation failed
-    // int first_value = lots_of_data[0].a[0];
+    int first_value = lots_of_data[0].a[0];
     
     // Alternatively using the -> operator
-    int first_value = lots_of_data->a[0];
+    // int first_value = lots_of_data->a[0];
     
     printf("First value: %d\n", first_value);
     
