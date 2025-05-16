@@ -7,8 +7,8 @@
 // For now, it is enough to know that everytime the keyword after #define
 // shows up in the code, it will be replaced by what is directly behind it.
 #define DATA_SIZE 4096
-#define ARRAY_SIZE (1<<24)
-//#define ARRAY_SIZE 2048
+//#define ARRAY_SIZE (1<<24)
+#define ARRAY_SIZE 2048
 
 // Structs are custom data types. You can fill them with pretty much everything
 // you want. Think of them as the part of a class that holds all the variables
@@ -26,20 +26,37 @@ struct lots_of_data_s
 data *get_lots_of_data()
 {
     data *lots_of_data = (data *)malloc(ARRAY_SIZE * sizeof(data));
-
     return lots_of_data;
 }
 
+/////////// Call //////////
+void call_by_value(data actual_data)
+{
+    // This function is called by value. This means that the data is copied
+    // into the function. If you change the data in the function, it will
+    // not change the original data.
+    actual_data.a[0] = 1;
+}
+
+void call_by_reference(data *ptr_to_data)
+{
+    // This function is called by reference. This means that the data is not
+    // copied into the function. If you change the data in the function, it
+    // will change the original data.
+    ptr_to_data->a[0] = 1;
+    return;
+}
+///////////////////////////
 
 int main()
 {
     /////////////// My Sol ///////////////
     // Call the function and store the return value
-    data *lots_of_data = get_lots_of_data();
+    data *data_ptr = get_lots_of_data();
 
     ///////////// Fixing SegFault /////////////
     // Check if the memory allocation was successful
-    if (lots_of_data == NULL)
+    if (data_ptr == NULL)
     {
         printf("Memory allocation failed\n");
         return 1; // Exit the program with an error code
@@ -47,24 +64,22 @@ int main()
     ///////////// Fixing SegFault /////////////
     
     // Access the first int in the data structure
-    // This might cause a segmentation fault if the memory allocation failed
-    int first_value = lots_of_data[0].a[0];
-    
-    // Alternatively using the -> operator
-    // int first_value = lots_of_data->a[0];
+    int first_value = data_ptr[0].a[0];
     
     printf("First value: %d\n", first_value);
     
-    // Free the allocated memory to prevent memory leaks
-    free(lots_of_data);
-    /////////////// My Sol /////////////////
-
+    // Make the function calls BEFORE freeing the memory
     time_t start = get_clock();
-    while(get_clock() - start < 1 << 14)
-    {
-        1 + 1;
-    }
+    call_by_reference(&data_ptr[1]); // or (data_ptr +1)
     print_diff(start, get_clock(), 1);
+
+    start = get_clock();
+    call_by_value(data_ptr[1]); 
+    print_diff(start, get_clock(), 1);
+    
+    // Free the allocated memory to prevent memory leaks
+    free(data_ptr);
+    /////////////// My Sol /////////////////
 
     return 0;
 }
