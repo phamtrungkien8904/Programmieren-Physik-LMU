@@ -7,7 +7,8 @@
 // For now, it is enough to know that everytime the keyword after #define
 // shows up in the code, it will be replaced by what is directly behind it.
 #define DATA_SIZE 4096
-#define ARRAY_SIZE (1<<24)
+// #define ARRAY_SIZE (1<<24)
+#define ARRAY_SIZE 2048
 
 // Structs are custom data types. You can fill them with pretty much everything
 // you want. Think of them as the part of a class that holds all the variables
@@ -29,8 +30,34 @@ data *get_lots_of_data()
     return lots_of_data;
 }
 
+
 int main()
 {
+    /////////////// My Sol ///////////////
+    // Call the function and store the return value
+    data *lots_of_data = get_lots_of_data();
+
+    ///////////// Fixing SegFault /////////////
+    // Check if the memory allocation was successful
+    if (lots_of_data == NULL)
+    {
+        printf("Memory allocation failed\n");
+        return 1; // Exit the program with an error code
+    }
+    
+    // Access the first int in the data structure
+    // This might cause a segmentation fault if the memory allocation failed
+    int first_value = lots_of_data[0].a[0];
+    
+    // Alternatively using the -> operator
+    // int first_value = lots_of_data->a[0];
+    
+    printf("First value: %d\n", first_value);
+    
+    // Free the allocated memory to prevent memory leaks
+    free(lots_of_data);
+    /////////////// My Sol /////////////////
+
     time_t start = get_clock();
     while(get_clock() - start < 1 << 14)
     {
