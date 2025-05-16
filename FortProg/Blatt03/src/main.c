@@ -35,7 +35,7 @@ int main()
 {
     /////////////// My Sol ///////////////
     // Call the function and store the return value
-    // data *lots_of_data = get_lots_of_data();
+    data *lots_of_data = get_lots_of_data();
 
     ///////////// Fixing SegFault /////////////
     // Check if the memory allocation was successful
@@ -48,15 +48,15 @@ int main()
     
     // Access the first int in the data structure
     // This might cause a segmentation fault if the memory allocation failed
-    // int first_value = lots_of_data[0].a[0];
+    int first_value = lots_of_data[0].a[0];
     
     // Alternatively using the -> operator
-    // int first_value = lots_of_data->a[0];
+    int first_value = lots_of_data->a[0];
     
-    // printf("First value: %d\n", first_value);
+    printf("First value: %d\n", first_value);
     
     // Free the allocated memory to prevent memory leaks
-    // free(lots_of_data);
+    free(lots_of_data);
     /////////////// My Sol /////////////////
 
     time_t start = get_clock();
