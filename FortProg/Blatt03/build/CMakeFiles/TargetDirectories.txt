@@ -1,0 +1,6 @@
+/home/kien/Desktop/Github/Programmieren-Physik-LMU/FortProg/Blatt03/build/CMakeFiles/main.dir
+/home/kien/Desktop/Github/Programmieren-Physik-LMU/FortProg/Blatt03/build/CMakeFiles/edit_cache.dir
+/home/kien/Desktop/Github/Programmieren-Physik-LMU/FortProg/Blatt03/build/CMakeFiles/rebuild_cache.dir
+/home/kien/Desktop/Github/Programmieren-Physik-LMU/FortProg/Blatt03/build/_deps/timerlibrary-build/CMakeFiles/timer_lib.dir
+/home/kien/Desktop/Github/Programmieren-Physik-LMU/FortProg/Blatt03/build/_deps/timerlibrary-build/CMakeFiles/edit_cache.dir
+/home/kien/Desktop/Github/Programmieren-Physik-LMU/FortProg/Blatt03/build/_deps/timerlibrary-build/CMakeFiles/rebuild_cache.dir
